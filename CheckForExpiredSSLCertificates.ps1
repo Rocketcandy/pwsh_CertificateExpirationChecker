@@ -79,13 +79,15 @@ $Report = foreach ($url in $urls) {
             if ($ExpiresIn -le $CriticalCertAgeDays) {
                 $CheckResult = "CRITICAL"
             }
-            # Add more details for Warning and Critical dates
-            $details += "Cert for site $($url.URL) expires in $ExpiresIn days [on $ExpirationDate]`n"
-            $details += "Threshold is $minimumCertAgeDays days. Check details:`n"
-            $details += "Cert name: $($CertDetails.Subject)`n"
-            $details += "Cert thumbprint: $($CertDetails.Thumbprint)`n"
-            $details += "Cert effective date: $($CertDetails.NotBefore)`n"
-            $details += "Cert issuer: $($CertDetails.Issuer)"
+            if ($url.ManualExpireDate -eq "") {
+                # Add more details for Warning and Critical dates
+                $details += "Cert for site $($url.URL) expires in $ExpiresIn days [on $ExpirationDate]`n"
+                $details += "Threshold is $minimumCertAgeDays days. Check details:`n"
+                $details += "Cert name: $($CertDetails.Subject)`n"
+                $details += "Cert thumbprint: $($CertDetails.Thumbprint)`n"
+                $details += "Cert effective date: $($CertDetails.NotBefore)`n"
+                $details += "Cert issuer: $($CertDetails.Issuer)"
+            }
         }
     }
     # Couldn't get the Expiration Date from the site or the .csv
@@ -124,13 +126,13 @@ $HTMLBody += $FormatedHtml
 $HTMLBody += "<br>Edit this file to update the list that is checked:<br> `"$Path`""
 
 # If email info is actually setup then send it otherwise export as Test.html
-if ($SMTPServer -ne "" -and $null -ne $SMTPServer -and $SMTPServer -ne "smtp.exmaple.com"){
+if ($SMTPServer -ne "" -and $null -ne $SMTPServer -and $SMTPServer -ne "smtp.exmaple.com") {
     # Send Email
     Send-MailMessage -From $From -To $To -Subject $Subject -BodyAsHtml $HTMLBody -SmtpServer $SMTPServer -WarningAction SilentlyContinue
 }
-else{
+else {
     Write-Host "SMTP server doesn't seem to be filled in exporting to C:\Temp\Test.html instead"
-    if(!(Test-Path -Path "C:\Temp")){
+    if (!(Test-Path -Path "C:\Temp")) {
         Write-Host "C:\Temp doesn't exist Creating it now"
         New-Item "C:\Temp" -ItemType Directory | Out-Null
     }
