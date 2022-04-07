@@ -1,28 +1,7 @@
 URL,Server,Application,Owner,Issuer,Wildcard,ManualExpireDate
+https://anotherinternalapp.example.com,App Server 01,Another Internal App,Web Team,Internal CA,,5/20/2022
 https://en.wikipedia.org/,Wikipedia web server,Wikipedia,Web Team,R3,Yes,
-https://internalapp.example.com,App Server 01,Internal App 1,Web Team,Internal CA,,
-https://example.com,Firewall,VPN,Web Team,DigiCert,,3/14/2023
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
+https://internalapp.example.com,App Server 01,Internal App 1,Web Team,Internal CA,,3/1/2022
+https://vpn.example.com,Firewall,VPN,Security Team,DigiCert,,3/1/2023
+https://example.com,Web Server 01,Web Site,Web Team,DigiCert,,
+https://brokenurl.example.com,,,,,,
