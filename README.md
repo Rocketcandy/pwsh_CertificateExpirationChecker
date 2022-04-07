@@ -2,8 +2,9 @@
 Powershell 7 script to check a list of urls for Certificate Expiration Dates
 
 Example of how to call it: 
+```
 .\CheckForExpiredSSLCertificates.ps1 -Path "C:\Temp\check-urls.csv" -To "IT@example.com" -From "powershell@example.com" -WarningCertAgeDays 20 -CriticalCertAgeDays 10 -Subject "SSL Expiration Notice" -SMTPServer "smtp.example.com"
-
+```
 
 <html>
 Below is the list of URL's we are protecting with an SSL cert and the expiration date.<br><br><table border="1";> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>URL</th><th>Check result</th><th>Expires in days</th><th>Expires on</th><th>Server</th><th>Business Application</th><th>Owner</th><th>Issuer</th><th>Wildcard</th><th>Details</th></tr> <tr><td>https://internalapp.example.com</td><td style='color: red'>CRITICAL</td><td>-37</td><td>3/1/2022</td><td>App Server 01</td><td>Internal App 1</td><td>Web Team</td><td>Internal CA</td><td></td><td>Expiration date is hard coded into the spreadsheet make sure to update the spreadsheet when the certificate is updated.Cert for site https://internalapp.example.com expires in -37 days [on 3/1/2022]
