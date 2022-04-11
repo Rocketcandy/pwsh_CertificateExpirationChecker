@@ -14,7 +14,7 @@ Param(
     # To email addresses
     [Parameter(Mandatory = $false,
         HelpMessage = "Enter comma seperated list of email addresses to send to.")]
-    [String]$To = 'IT@example.com',
+    [String[]]$To = 'IT@example.com',
     # Subject
     [Parameter(Mandatory = $false,
         HelpMessage = "Email subject")]

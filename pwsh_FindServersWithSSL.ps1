@@ -1,4 +1,8 @@
-$Servers = "google.com", "example.com"
+Param(
+    [Parameter(Mandatory = $false,
+        HelpMessage = "Enter comma seperated list of hostnames to check")]
+    [String[]]$Servers = "example.com"
+)
 $ServersWithSSL = foreach ($Server in $Servers) {
     $Port = 443
     $Connection = New-Object System.Net.Sockets.TcpClient($Server, $Port)
