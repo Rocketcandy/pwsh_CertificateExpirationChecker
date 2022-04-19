@@ -82,7 +82,7 @@ $Report = foreach ($url in $urls) {
             if ($url.ManualExpireDate -eq "") {
                 # Add more details for Warning and Critical dates
                 $details += "Cert for site $($url.URL) expires in $ExpiresIn days [on $ExpirationDate]`n"
-                $details += "Threshold is $minimumCertAgeDays days. Check details:`n"
+                $details += "Warning threshold is $WarningCertAgeDays days, Critical is $CriticalCertAgeDays. Check details:`n"
                 $details += "Cert name: $($CertDetails.Subject)`n"
                 $details += "Cert thumbprint: $($CertDetails.Thumbprint)`n"
                 $details += "Cert effective date: $($CertDetails.NotBefore)`n"
